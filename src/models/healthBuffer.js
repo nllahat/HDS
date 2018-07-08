@@ -1,19 +1,26 @@
 import fifo from 'fifo';
 import ServiceStatus from './serviceStatus';
 
+/**
+ * HealthBuffer contains the fifo (stack) that holds all the statuses logged by the monitor interval
+ * The fifo will remove the oldest log if it reaches up to 60 records
+ * A record is a ServiceStatus class
+ */
 class HealthBuffer {
-    constructor(name, fixedSize) {
+    constructor(name, fixedSize = 0) {
         this.fixedSize = fixedSize;
         this.name = name;
         this.fifo = fifo();
     }
 
     logStatus(isOk, code) {
-        if (this.fifo.length === this.fixedSize) {
-            this.fifo.shift();
-        }
+        if (this.fixedSize) {
+            if (this.fifo.length === this.fixedSize) {
+                this.fifo.shift();
+            }
 
-        this.fifo.push(new ServiceStatus(isOk, code));
+            this.fifo.push(new ServiceStatus(isOk, code));
+        }
     }
 
     getLastStatus() {

@@ -1,7 +1,7 @@
 import rpn from 'request-promise-native';
 import settings from '../config/settings';
 import { servicesResponse } from '../components';
-import * as globalHealthBuffers from '../models/globalHealthBuffers';
+import * as GlobalHealthBuffers from '../models/globalHealthBuffers';
 
 const defaultOptions = {
     json: true, // automatically parses the JSON string in the response
@@ -10,6 +10,13 @@ const defaultOptions = {
 };
 let interval;
 
+/**
+ * This function send http request to the service by using request-promise-native (see defaults above)
+ * The response then parsed to a single boolean whether if the service is Ok or not
+ * Then push the result to the current service buffer in GlobalHealthBuffers
+ * @param service
+ * @returns {Promise<any>}
+ */
 function logServiceHealthStatus(service) {
     return new Promise(resolve => {
         rpn(Object.assign({ uri: service.uri }, defaultOptions))
@@ -25,12 +32,12 @@ function logServiceHealthStatus(service) {
                 return Promise.resolve(servicesResponse.handleResponseParsing.parseResponse(service, response.body));
             })
             .then(result => {
-                globalHealthBuffers.updateServiceBuffer(service.uri, result, 200);
+                GlobalHealthBuffers.updateServiceBuffer(service.uri, result, 200);
 
                 resolve();
             })
             .catch(err => {
-                globalHealthBuffers.updateServiceBuffer(service.uri, false, err && err.error && err.error.code);
+                GlobalHealthBuffers.updateServiceBuffer(service.uri, false, err && err.error && err.error.code);
 
                 resolve();
             });

@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const settings = {
+    intervalValue: Number(process.env.INTERVAL_VALUE),
+    bufferLimit: Number(process.env.BUFFER_LIMIT),
     servicesList: [
         {
             name: 'staging',
@@ -25,10 +27,7 @@ const settings = {
             statusPath: 'status.overall',
             okWord: 'OK'
         }
-    ],
-    intervalValue: Number(process.env.INTERVAL_VALUE),
-    bufferLimit: Number(process.env.BUFFER_LIMIT),
-
+    ]
 };
 
 export default settings;
