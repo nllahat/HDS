@@ -1,17 +1,23 @@
 import xml2json from 'xml2json';
 import objectPath from 'object-path';
 
-export const parseResponse = (service, response) => {
+export const xmlToJson = xml => {
     try {
-        let parsed = service.responseType === 'xml' ? JSON.parse(xml2json.toJson(response)) : response;
-
-        parsed = objectPath.get(parsed, service.statusPath, '');
-        parsed = parsed === service.okWord;
-
-        return parsed;
+        return JSON.parse(xml2json.toJson(xml));
     } catch (e) {
-        console.error(e);
+        return null;
+    }
+};
 
+export const parseResponse = (service, response) => {
+    let parsed = service.responseType === 'xml' ? xmlToJson(response) : response;
+
+    if (!parsed) {
         return false;
     }
+
+    parsed = objectPath.get(parsed, service.statusPath, '');
+    parsed = parsed === service.okWord;
+
+    return parsed;
 };

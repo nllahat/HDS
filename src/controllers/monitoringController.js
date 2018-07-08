@@ -11,7 +11,7 @@ const defaultOptions = {
 let interval;
 
 function logServiceHealthStatus(service) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         rpn(Object.assign({ uri: service.uri }, defaultOptions))
             .then(response => {
                 if (!response) {
