@@ -16,7 +16,7 @@ Each service in the list is represented by and object that contains the service 
 statusPath (the object path to the property that represents the overall status) and okWord (the term that symbol if status is OK).
 
 ### .env
-This file contains environment variables (server port, interval value, max size of buffer).
+This file contains environment variables (server port, interval value, buffer max size).
 
 ### Overview
 My main focus was on how to store the logs for each service and how to parse thier responses. 
