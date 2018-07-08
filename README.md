@@ -35,3 +35,6 @@ if the interval is delayed, an early log can get pushed to the fifo after a late
 
 ## Run Tests
 Run **npm test**
+
+## Run Server
+Run **npm install** and then **npm start**
