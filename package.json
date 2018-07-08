@@ -4,7 +4,7 @@
   "description": "Health dashboard service for bim360 services",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node -- src/index.js",
+    "start": "nodemon --exec babel-node -- src/server.js",
     "test": "node_modules/.bin/mocha -r babel-register --recursive"
   },
   "author": "Neta Li Lahat",
