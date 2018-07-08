@@ -30,10 +30,10 @@ Each service has its own HealthBuffer. The HealthBuffers are stored in a global 
 I tried to split the code to small components to ease on reuse, make the code readable and to ease on unit testings.
 
 ### Notice
-*Logs are pushed to a FIFO on each interval and therefore the push might be inaccurate - 
-if the interval is delayed, an early log can get pushed to the fifo after a later one.
+ * Logs are pushed to a FIFO on each interval and therefore the push might be inaccurate - 
+ if the interval is delayed, an early log can get pushed to the fifo after a later one.
 
-*On first run - the buffers will be empty cause it takes the main code 1 minute to run because of the interval.
+ * On first minute - the buffers will be empty cause it takes the main code 1 minute to run because of the interval.
 
 ## Run Tests
 Run **npm test**
