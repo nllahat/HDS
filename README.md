@@ -13,7 +13,7 @@
 ### Settings
 The settings.js file contains a list of services to monitor. 
 Each service in the list is represented by an object that contains the service name, uri, responseType (xml / json), 
-statusPath (the object path to the property that represents the overall status) and okWord (the term that symbol if status is OK).
+statusPath (the object path to the property that represents the overall status) and okWord (the term that symbols if status is OK).
 
 ### .env
 This file contains environment variables (server port, interval value, buffer max size).
