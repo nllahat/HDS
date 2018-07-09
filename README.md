@@ -4,7 +4,7 @@
 
 1. Get health statuses of all services: http://localhost:8080/api/healthStatus/getHealthStatuses
   * Response is an array of service statuses.
-  * Each statues will have a timestamp, code and isOk.
+  * Each status will have a timestamp, code and isOk.
 
 2. Get services availability: http://localhost:8080/api/healthStatus/getServicesAvailability
   * Response is an array of service availability percentages.
@@ -12,7 +12,7 @@
 ## Description
 ### Settings
 The settings.js file contains a list of services to monitor. 
-Each service in the list is represented by and object that contains the service name, uri, responseType (xml / json), 
+Each service in the list is represented by an object that contains the service name, uri, responseType (xml / json), 
 statusPath (the object path to the property that represents the overall status) and okWord (the term that symbol if status is OK).
 
 ### .env
